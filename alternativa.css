@@ -1,0 +1,713 @@
+body{
+    /* background-color: #d6d6d6; */
+    background-color: #fff;
+    font-family: sans-serif;
+}
+.nav-main{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 9.6%;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1000;
+
+}
+.noUi-tooltip {
+    display: none;
+}
+.noUi-active .noUi-tooltip {
+    display: block;
+}
+.leaflet-popup{
+    width: fit-content; 
+    position: absolute;
+    top:30px;
+}
+.leaflet-popup-content-wrapper {  
+    background-color: #ffffffdc;
+
+}
+.leaflet-popup-close-button{
+    visibility: hidden;
+}
+
+.leaflet-popup-tip-container {
+    visibility: hidden;
+}
+.leaflet-popup-content { 
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    font-family:Arial, Helvetica, sans-serif;
+}
+.btn-toggle-nav{
+    width: 60px;
+    left: 0;
+    background-color: #fcfcfc;
+    background-image: url("imagens/Barralateral.png");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    cursor:pointer
+}
+.btn-toggle-nav:hover{
+    opacity: 0.7;
+}
+.nav-main ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 15px;
+}
+.nav-main ul li {
+    list-style: none;
+    line-height: 30px;
+}
+.nav-main ul li a{
+    display: block;
+    height: 100%;
+    padding: 0 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:#111;
+    font-size: 16px;
+    font-size: 16px;
+}
+.nav-sidebar{
+    position: absolute;
+    left:0;
+    top:9.5%;
+    width: 20%;
+/*    width: 272px; */
+    height: calc(100vh - 60px);
+    background-color: #ffffff;
+    z-index:1000;
+    overflow-y:visible;
+    overflow-x: hidden;
+}
+
+.nav-sidebar li{
+    padding-top: 15px;
+    overflow: visible;
+    visibility: visible;
+    line-height: 60px;
+    list-style:none;
+    margin-left: 10px;
+}
+
+
+.nav-sidebar  li span, .nav-sidebar  li a {
+    display: block;
+    height: 60px;
+    padding: 0 5px;
+    text-decoration: none;
+    color:#080808;
+    font-size:14px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: all 1s ease-in-out;
+}
+.nav-sidebar  li a:hover{
+    transition: 0.5s ease;
+    top: 50%;
+    transform: translateY(-15%);
+    transition: all 0.8s ease;
+    opacity:0.9;
+    transition: 0.5s ease;
+    background-color: #080808;
+    color:#eee
+}
+/* Traço Lado Esquerdo do menu */
+.nav-sidebar  li a:hover::before {
+    opacity: 0.7;
+    visibility: unset;
+}
+
+.nav-sidebar  li a::before {
+    transition: 2s ease;
+    content: '';
+    position: absolute;
+    top: 0.8em;
+    left: -1.2rem;
+    height: 60%;
+    border-left: 3px solid #949292;
+    border-radius: 15px;
+    opacity: 1;
+    visibility: visible;
+}
+.mercadoHabitacional{
+    background-color: #a1a1a1;
+}
+.categoria{
+    line-height: 30px;
+    margin-left: 20px
+}
+.nav-sidebar  li a .dropdown{
+    position:absolute;
+    right:0;
+    margin-right:20px;
+    margin-top: 24px;
+    transition: 0.6s ease;
+
+}
+.nav-sidebar  li .sub-menu{
+    background: rgba(255,255,255,0.08);
+    display: none;
+    cursor: pointer;
+}
+.nav-sidebar  li .sub-menu a{
+/* Background aqui, caso queira mudar a cor das sub categorias*/
+    padding-left: 20px;
+}
+.rotation{
+    transform:rotate(90deg)
+}
+.rotacaonormal{
+    transform:rotate(270deg);
+}
+.rotacaoativa{
+    transform:rotate(270deg);
+}
+.rotate{
+    transform: rotate(90deg);
+}
+/* Rotate e Rotation  têm de estar assim, caso apague um e mude os outros para o mesmo nome, o scroll não funciona*/
+#mapDIV{
+    position: fixed;
+    margin-top:105px;
+    height: 78%;
+    width: 50.4%;
+    left:20%;
+}
+/* acho que posso apagar o flex */
+.flex-container{
+    display:flex;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.separador{
+    font-size: 25px;
+    background-color: rgb(228, 156, 62);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(228, 156, 62);
+    text-align: center;
+    visibility: visible;
+}
+.ine{
+    font-size: 12px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: left;
+    visibility: hidden;
+
+}
+.ine a{
+    text-decoration: none;
+}
+.ine img{
+    margin-top: 2px;
+    width: 10px;
+    height: 8px;
+}
+.legend {
+    line-height: 18px;
+    color: rgb(90, 87, 87);
+    border:1px solid grey;
+}
+.legend i {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+    
+}
+#painelLegenda{
+    font-size: 12pt;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    text-align: center;
+    /* background-color: rgb(248, 248, 180); */
+    width: 70%;
+    line-height: 1.5em;
+
+/* DIV onde está escrito legenda */
+
+}
+#legendaA{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-weight:normal;
+/*  DIV onde está os dados da legenda (cores e valores)*/
+}
+
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: black;
+
+}
+.info h5{
+    margin: 0 0 2px;
+    font:14px/16px Arial, Helvetica, sans-serif;
+    color:grey;
+    font-weight: bolder;
+    font-style: italic;
+}
+.nav-sidebar ul li .sub-menu a:hover{
+    background-color: #080808;
+    color:#eee;
+}
+#slidersGeral{
+    width: 80%;
+    height: 15px;
+    position: relative;
+    left:80px;
+    bottom: 40px;
+}
+#sliderPopConcelho2021, #sliderPopFreguesia2021{
+    position:relative;
+    margin-top:15px;
+    margin-left:25%;
+    visibility: hidden;
+}
+#sliderVariacaoConcelho2021, #sliderPopPercentagem2021, #sliderVariacaoFreguesia2021, #sliderPopConcelho2011, #sliderPopConcelho2001, #sliderVariacaoConcelho2011,
+#sliderPopConcelho1991{
+    position:relative;
+    margin-top:0px;
+    margin-left:25%;
+    visibility: hidden;
+}
+/* MUDAR A BARRA DE CONTROLO DO ZOOM */
+/* .leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    position: absolute;
+    margin-top:250px;
+	background-clip: padding-box;
+} */
+.leaflet-touch .leaflet-bar {
+    opacity: 0.7;
+}
+#Fontes{
+    position: fixed;
+    height: 2%;
+    width: 80%;
+    bottom:1.5%;
+    left:20%;
+    background-color: white;
+    visibility: visible;
+
+}
+
+.fonte {
+    padding: 6px 8px;
+    font: 7px Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+.fonte h4 {
+    margin: 0 0 5px;
+    color: black;
+    font:9px
+
+}
+.fonte a{
+    text-decoration: none;
+    color:black
+}
+#legendTitle {
+    font-size: 11pt;
+    text-align: center;
+}
+.symbolsContainer {
+    margin-top: 10px;
+    font-size: 12pt;
+    line-height: 1.25em;
+}
+.symbolsContainer i {
+    width: 30px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+   
+}
+.legendCircle {
+    border-radius:50%;
+    border: 1px solid black; 
+    background:rgba(255, 0, 0,0.8);
+	display:inline-block;
+
+}
+.node:hover{
+    stroke-width: 7px;
+    opacity: 1 
+}
+.legendValue {
+    position: absolute;
+    right: 40%;
+    font-size: 14px;
+}
+.legendValue2 {
+    position: absolute;
+    right: 40%;
+    font-size: 13px;
+    margin-top:-10px
+}
+.legend1 {
+    padding: 6px 10px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.sub-item{
+    background-color: #d9d9d9;
+}
+.butaoEscala{
+    border: none;
+    padding: 2px;
+    background-color: rgb(103, 193, 221);
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+    border-radius: 2px;
+    margin-top: 8px;
+    width: 20%;
+    margin-left:100px
+}
+.butao {
+    border: none;
+    background-color: rgb(243, 146, 82);
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    border-radius: 2px;
+    margin-top: 8px;
+    width: 20%;
+    display: inline;
+}
+.btn {
+    border: none;
+    outline: none;
+    padding: 2px 0;
+    background-color: #333332;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border-radius: 2px;
+    margin-top: 8px;
+    bottom: 50%;
+    width: 20%;
+    margin-left:100px
+}
+.active{
+    background-color:rgb(149, 238, 149);
+
+
+}
+#selectTA{
+    width: auto;
+}
+#mostrarBarra{
+    display:block;
+}
+.active1, .active3{
+    background-color: #fd9e50dc;
+}  
+.active2{
+    background-color: #477cde;
+    padding: 5px 0px;
+    margin-bottom: 10px;
+}
+.active4, .active5{
+    background-color: rgb(70, 145, 32);
+    padding: 4px
+}
+.btn:hover {
+    background-color: rgb(133, 193, 204);
+    color: white;
+}
+.box {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 2px solid;
+}
+.tableFixHead{ 
+    overflow: auto;
+    height: 100%; 
+    background-color: white;
+}
+
+td{
+    color: rgb(51, 51, 51);
+    font-weight: normal;
+    font-size: 8pt;
+    text-align: center;
+}
+
+tr td:nth-child(1){
+    font-weight: bolder;
+}
+td.bgcolor{
+    background-color: #F7F7F7;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+table{ 
+    border-collapse: collapse; 
+    width: 100%; 
+}
+.borderleft{
+    border-left: 1px solid grey;
+}
+.borderbottom{
+    border-bottom: 1px solid grey;
+}
+#input-number-min, #input-number-max{
+    border-radius: 5px;
+    text-align: center;
+    /* background-color: #e9e8e8de; */
+    background-color: #f5f5f5de;
+    width: 20%;
+    margin-left: 3%;
+    border: 1px solid black;
+}
+#filtrar{
+    margin-top:20px;
+    margin-left: 25px;
+    font-size: 10pt;
+}
+#filtrar p{
+    font-size: 8pt;
+}
+th, td{ 
+    padding: 10px 15px 10px 10px;
+}
+thead{
+    background: #eee;
+}
+thead tr.fixar1 th, thead tr.fixar1 td {
+    position: sticky;
+    top: 0;
+    background: #eee;
+}
+  
+thead tr.fixar2 th, thead tr.fixar2 td {
+    position: sticky;
+    top: 25px;
+    background: #eee;
+    border-bottom:1px solid grey ;
+    padding:1px;
+    width: 20px;
+}
+
+#divLegenda{
+    width: 100%;
+    height: 10%;
+}
+#grafico{
+    position: fixed;
+    margin-top:105px;
+    height: 77.71%;
+    width: 79.8%;
+    left:20%;
+    visibility: hidden;
+    background-color: #fff;
+    z-index: 1000;
+}
+#tabela{
+    position: fixed;
+    margin-top:156px;
+    height: 69.7%;
+    width: 79.8%;
+    left:20%;
+    visibility: hidden;
+    background-color: #fff;
+    z-index: 500;
+}
+.highcharts-figure{
+    margin-top:0px
+}
+#space{
+    position: fixed;
+    width: 80%;
+    height: 51px;
+    margin-top:3.8%;
+    left:20%;
+    z-index: 1000;
+    background-color: #fff;
+    border-top:1px solid rgba(92, 92, 92, 0.5);
+}
+
+#painel{
+    position:fixed;
+    float:left;
+    width: 29.9%;
+    height: 78%;
+    margin-left:70.9%;
+    background-color: #fff;
+    margin-top: 105px;
+}
+#myDIV{
+    width: 100%;
+}z
+#barraTabela{
+    position:fixed;
+    float:left;
+    width: 100%;
+    height: 9%;
+    margin-left:18%;
+    background-color: #fff;
+    margin-top: 100px;
+    z-index:5;
+    visibility: hidden;
+}
+
+#opcoesTabela{
+    width: 50%;
+    margin-left: 12%;
+    position: absolute;
+    display: inline-flex;
+    top:17%;
+    left:20%;
+    visibility: hidden;
+}
+#tabelaPopResidente, #tabelaVariacao, #tabelaPercentagem{
+    width: 40%;
+    margin-left:50px;
+}
+#geralEscalas{
+    width: 100%;
+    position: relative;
+    top:0px;
+
+}
+
+#escalasConcelho{
+    position: relative;
+    top:0;
+    width: 100%;
+    border-top: 1px solid grey;
+    display: block;
+
+}
+#escalasFreguesias{
+    position: absolute;
+    top:0px;
+    border-top: 1px solid grey;
+    display: block;
+}
+#concelho, #freguesias{
+    text-align: center;
+    width: 30%;
+    margin-left:50px
+}
+
+#absoluto, #taxaVariacao, #percentagem,
+#absolutoFreguesia, #taxaVariacaoFreguesia, #percentagemFreguesia{
+    width:fit-content;
+    margin-left: 5px;
+
+}
+.sliderAtivo{
+    width:40%;
+    margin-left: 30%;
+
+}
+
+#btnPrev{
+    border: 1px solid #e5e5e5;
+    padding: 8px;
+}
+#mySelect{
+    border: 1px solid #e5e5e5;
+    padding: 6px;
+}
+#btnNext {
+    border: 1px solid #e5e5e5;
+    padding: 8px;
+}
+#tipoAlojamentoSelect{
+    border: 1px solid #e5e5e5;
+    padding: 0px;
+    margin-top:13px;
+}
+select {
+    font-size: 14px;
+    border: none;
+    background: whitesmoke;
+    border-radius: 5%;
+}
+
+.imgButton{
+    width: 5px;
+    height: 5px;
+}
+.popUpGrafico{
+    position: absolute;
+    background-color: whitesmoke;
+    border-radius: 2px;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+
+} 
+.node:hover{
+  stroke-width: 7px;
+  opacity: 1
+}
+.titulo{
+    margin-top:15px;
+    font-size: 10pt;
+}
+.titulo p{
+    margin: 2px;
+}
+.float{
+    float: left;
+}
+
+/* #grad1 {
+    width: 100px;
+    height: 30px;
+    background-image: linear-gradient(to right, rgb(14,89,147),rgb(255,247,192) , rgb(255,82,82));
+  } */
+#temporal a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 12px;
+  cursor:pointer;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+#temporal a:hover {
+  background-color: rgb(197, 196, 196);
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+.round {
+    border-radius: 15%;
+  }
+.margin{
+    margin-left: 2px;
+}
