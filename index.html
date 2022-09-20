@@ -120,24 +120,25 @@
                         <div class="posicaoContacto">
                             <strong>Se pretende esclarecer alguma questão ou encontrou algum erro, não hesite em contactar-nos. Deixe a sua mensagem no seguinte formulário.</strong>
                             <div class="container">
-                                <form class="contact-form" action="https://docs.google.com/forms/d/14lh6MIQOy9j3jWzEl7BysxEe4p9OoU9WN3tytbQjj1I/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
-                                    <label for="Nome">Nome</label>
+                                <form id="gform" name="gform" target="hidden_iframe" onsubmit="submitted=true;" class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLScZcPE7LgngP5_AVy_SKqNiXtS_l3OOfHDV5tTAo8jmbNZ-1A/formResponse?">
+                                    <label for="entry.953809568">Nome</label>
                                     <input type="text" id="entry.953809568" name="entry.953809568" placeholder="Seu nome.." required>
 
-                                    <label for="Email">E-mail</label>
-                                    <input type="text" id="entry.439443380" name="entry.439443380" placeholder="Seu e-mail.." required>
+                                    <label for="entry.2077043078">E-mail</label>
+                                    <input type="text" id="entry.2077043078" name="entry.2077043078" placeholder="Seu e-mail.." required>
 
-                                    <label for="Tema">Tema</label>
-                                    <input type="text" id="Tema" name="Tema" placeholder="Tema">
+                                    <label for="entry.439443380">Tema</label>
+                                    <input type="text" id="entry.439443380" name="entry.439443380" placeholder="Tema">
 
-                                    <label for="Mensagem">Mensagem</label>
-                                    <textarea id="Mensagem" name="Mensagem" placeholder="Escreva aqui..." style="height:200px" required></textarea>
+                                    <label for="entry.279443852">Mensagem</label>
+                                    <textarea id="entry.279443852" name="entry.279443852" placeholder="Escreva aqui..." style="height:200px" required></textarea>
 
                                     <input type="submit" id="submit" value="Submeter" style="margin-left:45% ;">
                                 </form>
-                                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
-                                <div id="error"></div>
-                                <div id="success-msg"></div>
+                                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){}"></iframe>
+                                <div id="success-msg">
+                                    <p>Mensagem enviada</p><div class="check">&#10004;</div>
+                                </div>
                             </div>
                         </div>
                     </div>  
@@ -148,14 +149,14 @@
                 </div>
             </div>
         </div>
-     <script type="text/javascript">var submitted=false;</script>
-     <script type="text/javascript">
+    <script type="text/javascript">
+        var submitted=false;
+    </script>
+    <script type="text/javascript">
         $('#gform').on('submit', function(e) {
-          $('#gform *').fadeOut(2000);
-          $('#gform').prepend('Your submission has been processed...');
+          $('#success-msg').css("visibility","visible");
           });
-    </script>  
-    <script> 
+    </script> 
         var div = document.querySelector('.number-item');
         var hasEntered = false;
 
