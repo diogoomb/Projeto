@@ -22,7 +22,23 @@ body{
     position: relative;
     margin-left: 150px;
 }
-  
+#success-msg{
+    text-align: center;
+    display: inline-flex;
+    visibility: hidden;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    padding-top: 15px;
+}
+.check{
+    width: 20px;
+    height: 20px;
+    background-color: #008b0085;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 .sidebar{
     width: 150px;
     height: 100%;
@@ -371,20 +387,4 @@ h3{
     background: rgba(85, 85, 85, 0.5)
 
 }
-#success-msg{
-    text-align: center;
-    display: inline-flex;
-    visibility: hidden;
-    align-items: center;
-    align-content: center;
-    gap: 15px;
-    padding-top: 15px;
-}
-.check{
-    width: 20px;
-    height: 20px;
-    background-color: #008b0085;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+
