@@ -31,9 +31,6 @@ body{
     gap: 15px;
     padding-top: 15px;
 }
-.container #success-msg{
-    text-align: center;
-}
 .check{
     width: 20px;
     height: 20px;
